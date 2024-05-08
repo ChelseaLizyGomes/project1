@@ -7,7 +7,7 @@ let products = [
 
     ];
 
-// let products = []  empty the product list if you want
+ // let products = []  empty the product list if you want
 
 // Initial displaying of products
 displayProducts();
