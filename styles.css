@@ -188,7 +188,7 @@ button {
     color: var(--accent-color);
     box-shadow:rgba(0 0 0 / 30%) 0px 4px 4px, rgb(231, 236,236)0px 0px 0px 3px;
  }
- .sidebar{
+ .sidebar {
     width: 300px;
     height: 100%;
     position: fixed;
@@ -205,7 +205,7 @@ button {
  .sidebar.open {
     right: 0;
  }
- .sidebar.close {
+ .sidebar-close {
     position: absolute;
     right: 20px;
     top: 10px;
@@ -217,7 +217,7 @@ button {
      gap: 10px;
      margin-top: 1rem;
  }
- .cart-tems{
+ .individual-cart-item{
     display: flex;
     justify-content: space-betweeen;
     padding: 10px 5px;
