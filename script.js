@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: parseFloat(
                     document.querySelectorAll('price')[index].textContent.slice(1),
                 ),
+                
 quantity:1, };
 
 const exisitingItem = cartItems.find(
