@@ -53,13 +53,13 @@ updateCartUI();
             cartItem.classList.add('cart-item','individual-cart-item');
             cartItem.innerHTML = `
             <span> (${item.quantity}x)${item.name} </span>
-            <span class="cart-item-price">$${(
+            <span class="cart-item-price">Rs.${(
                 item.price * item.quantity
             ).toFixed(2)}
             <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
             </span>
             `;
-            console.log('item.name');
+            
             cartItemsList.appendChild(cartItem);
         });
 
