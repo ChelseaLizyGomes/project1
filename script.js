@@ -1,23 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartItemCount = document.querySelector('.cart-icon span');
-    const cartItemsList = document.querySelector('.cart-items');
+    const cartItemsList = document.querySelector('.cart-tems');
     const cartTotal = document.querySelector('.cart-total');
     const cartIcon = document.querySelector('.cart-icon');
-    const sidebar = document.getElementById('.sidebar');
+    const sidebar = document.getElementById('sidebar');
 
     let cartItems = [];
     let totalAmount = 0;
 
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
+            console.log('Add to cart button clicked');
             const item = {
-                name: document.querySelectorAll('.card .card-title')[index].textContent,
+                name: document.querySelectorAll('.card .card--title')[index].textContent,
                 price: parseFloat(
-                    document.querySelectorAll('price')[index].textContent.slice(1),
+                    document.querySelectorAll('.price')[index].textContent.slice(1),
                 ),
                 
-quantity:1, };
+quantity:1,
+ };
 
 const exisitingItem = cartItems.find(
     (cartItem) => cartItem.name === item.name,
@@ -35,7 +37,7 @@ updateCartUI();
     });
 });
        function updateCartUI()  {
-        updateCartItemCount(cartItems.length);
+        updateCartItemCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
         updateCartItemList();
         updateCartTotal();
        }  
@@ -48,15 +50,16 @@ updateCartUI();
         cartItemsList.innerHTML = '';
         cartItems.forEach((item, index) => {
             const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item', 'individual-cart-item');
+            cartItem.classList.add('cart-item','individual-cart-item');
             cartItem.innerHTML = `
             <span> (${item.quantity}x)${item.name} </span>
             <span class="cart-item-price">$${(
                 item.price * item.quantity
-            ).toFixed(2,)}
+            ).toFixed(2)}
             <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
             </span>
             `;
+            console.log('item.name');
             cartItemsList.appendChild(cartItem);
         });
 
@@ -70,7 +73,7 @@ updateCartUI();
        }
          
        function removeItemFromCart(index) {
-        const removeItem = cartItems.splice(index, 1) [0];
+        const removeItem = cartItems.splice(index, 1)[0];
 totalAmount -= removeItem.price * removeItem.quantity;
 updateCartUI();
        }
@@ -85,7 +88,8 @@ updateCartUI();
 
        const closeButton = document.querySelector('.sidebar-close');
 closeButton.addEventListener('click', () =>{
-sidebar.classList.remove('open');   });
+sidebar.classList.remove('open');  
+ });
 });
 
 
