@@ -79,7 +79,7 @@ updateCartUI();
        }
 
        function updateCartTotal () {
-        cartTotal.textContent = `$${totalAmount.toFixed(2)}`;
+        cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`;
 
        }
        cartIcon.addEventListener('click', () => {
