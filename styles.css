@@ -159,25 +159,42 @@ body{
     height: 300px;
  }
  .card--price{
-    display:flex;
     align-items: center;
-    width: 100%;
     justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 10px 0px;
+
  }
  .card--price .price{
     color: var(--primary-color);
     font-weight: 600;
+    justify-content: space-between;
+    
+ }
+ .price{
+    justify-content: space-between;
+    
+    
  }
  .add-to-cart{
-    background: var(--primary-color);
-    color: var(--accent-color);
-    border-radius: 50%;
-    padding: 5px;
+    width: 100%;
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(241, 224, 40);
+    ;
+    padding: 7px 5px;
     cursor: pointer;
+    color: white;
  }
  .add-to-cart:hover{
     color: var(--accent-color);
-    box-shadow:rgba(0 0 0 / 30%) 0px 4px 4px, rgb(231, 236,236)0px 0px 0px 3px;
+    box-shadow:rgba(255, 243, 243, 0.3) 0px 4px 4px, rgb(44, 112, 112)0px 0px 0px 3px;
  }
  .sidebar {
     width: 300px;
