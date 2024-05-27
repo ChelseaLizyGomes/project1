@@ -34,7 +34,7 @@ body{
     background-color: rgb(40, 74, 108);
     color: #fff;
 }
-.header--menu{
+.header--bar{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,9 +44,10 @@ body{
 .search--box{
     background: var(--decent-color);
     border-radius: 10px;
-    flex:1;
+    flex-shrink: 1;
     align-items: center;
     padding: 0 1rem;
+    max-width: 600px;
 }
 .search--box i{
     color: var(--primary-color);
@@ -55,14 +56,14 @@ body{
 .search--box input{
     background: transparent;
     padding: 10px;
-    width: 40%;
+  
 }
-.menu--icons {
+.icons {
     display: flex;
     align-items: center;
 }
 
-.menu--icons i{
+.icons i{
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -116,13 +117,13 @@ body{
     margin: 1rem 0 10px 0;
     color: var(--text-color);
 }
-.menu--list{
+.products--list{
     display: flex;
     gap:12px;
     
 }
-.menu--item{
-    width: 114px;
+.each--product{
+    width: 140px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -131,7 +132,7 @@ body{
     border-radius: 10px;
     color: var(--text-color);
 }
-.menu--item img{
+.each--product img{
     width: 100%;
 }
  .card--list{
@@ -142,7 +143,7 @@ body{
     
  }
  .card{
-    width: 190px;
+    width: 210px;
     display:flex;
     align-items: center;
     flex-direction: column;
@@ -186,11 +187,12 @@ body{
     position: relative;
     border: none;
     border-radius: 5px;
-    background-color: rgb(241, 224, 40);
+    background-color: rgba(250, 226, 5, 0.762);
+    color: rgb(245, 247, 255)
     ;
     padding: 7px 5px;
     cursor: pointer;
-    color: white;
+    
  }
  .add-to-cart:hover{
     color: var(--accent-color);

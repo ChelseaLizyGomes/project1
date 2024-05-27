@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            console.log('Add to cart button clicked');
+           
             const item = {
                 name: document.querySelectorAll('.card .card--title')[index].textContent,
                 price: parseFloat(
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ),
                 
 quantity:1,
+
  };
 
 const exisitingItem = cartItems.find(
