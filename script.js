@@ -9,27 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartItems = [];
     let totalAmount = 0;
 
+    //Add to cart 
+    // When the add-to-cart button is clicked, it constructs an object (item) representing the item to be added to the cart.
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
            
             const item = {
+                image: document.querySelectorAll('.card img')[index].src,
+                
                 name: document.querySelectorAll('.card .card--title')[index].textContent,
+                
                 price: parseFloat(
                     document.querySelectorAll('.price')[index].textContent.slice(3),
-                ),
-                
+                ),     
 quantity:1,
-image: document.querySelectorAll('.card img')[index].src,
- };
+ }; 
 
+
+//quantity and total price 
 const exisitingItem = cartItems.find(
     (cartItem) => cartItem.name === item.name,
 );
 if (exisitingItem) {
-    exisitingItem.quantity++;
+    exisitingItem.quantity++; //will increase the quantity if same item is added to cart
 }
 else {
-    cartItems.push(item);
+    cartItems.push(item); //will push the new item thats added to cart 
 }
 totalAmount += item.price;
 
@@ -43,9 +48,10 @@ updateCartUI();
         updateCartTotal();
        }  
 
-       function updateCartItemCount(count) {
+      function updateCartItemCount(count) { // the total number of items in the cart
         cartItemCount.textContent = count;
        }
+       
        function updateCartItemList(items = cartItems) {
         cartItemsList.innerHTML = '';
         items.forEach((item, index) => {
