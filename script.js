@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartItems = [];
     let totalAmount = 0;
 
-    //Add to cart 
+    //Add to cart - item (to render the cart items properly)
     // When the add-to-cart button is clicked, it constructs an object (item) representing the item to be added to the cart.
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
@@ -58,9 +58,13 @@ updateCartUI();
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item', 'individual-cart-item');
             cartItem.innerHTML = `
+            <div class='cart-item-display'>
+            <div class='row-img'>
+                <img class='rowimg' src=${item.image}>
+            </div>
                 <span>(${item.quantity}x) ${item.name}</span>
                 <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
-                <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button>
+                <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button></div>
             `;
             cartItemsList.appendChild(cartItem);
         });
