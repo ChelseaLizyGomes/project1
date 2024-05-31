@@ -51,12 +51,12 @@ updateCartUI();
       function updateCartItemCount(count) { // the total number of items in the cart
         cartItemCount.textContent = count;
        }
-       
-       function updateCartItemList(items = cartItems) {
+      
+     function updateCartItemList(items = cartItems) {
         cartItemsList.innerHTML = '';
-        items.forEach((item, index) => {
+        items.forEach((item, index) => { //iterates over each item 
             const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item', 'individual-cart-item');
+            cartItem.classList.add('cart-item','individual-cart-item');
             cartItem.innerHTML = `
             <div class='cart-item-display'>
             <div class='row-img'>
@@ -64,24 +64,46 @@ updateCartUI();
             </div>
                 <span>(${item.quantity}x) ${item.name}</span>
                 <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
-                <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button></div>
-            `;
+                <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
+                </div>
+                `;
             cartItemsList.appendChild(cartItem);
         });
-    
+
+        //Eventlistener to remove item 
         const removeButtons = document.querySelectorAll('.remove-item');
         removeButtons.forEach((button) => {
             button.addEventListener('click', (event) => {
-                const index = event.target.dataset.index;
+                const index = parseInt(event.target.dataset.index); // Parse the index as integer
+ 
+                console.log("Index to remove:", index);
+ 
                 removeItemFromCart(index);
-            });
+            });   
+        });
+    } 
+       
+            function removeItemFromCart(index) {
+                const removeItem = cartItems.splice(index,1)[0];
+            totalAmount -= removeItem.price * removeItem.quantity;
+            console.log("Item removed:", removeItem); 
+            
+            updateCartUI();
+               } 
+    
 
-       /*function updateCartItemList(){
+        
+       
+        /* function updateCartItemList(){
         cartItemsList.innerHTML = '';
         cartItems.forEach((item, index) => {
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item','individual-cart-item');
             cartItem.innerHTML = `
+             <div class='cart-item-display'>
+            <div class='row-img'>
+                <img class='rowimg' src=${item.image}>
+            </div>
             <span> (${item.quantity}x)${item.name} </span>
             <span class="cart-item-price">Rs.${(
                 item.price * item.quantity
@@ -98,30 +120,33 @@ updateCartUI();
             button.addEventListener('click', (event) => {
                 const index = event.target.dataset.index;
                 removeItemFromCart(index);
-            });*/
-        });
-       }
-         
-       function removeItemFromCart(index) {
-        const removeItem = cartItems.splice(index, 1)[0];
-totalAmount -= removeItem.price * removeItem.quantity;
+            });
+            
+            function removeItemFromCart(index) {
+        const removedItem = cartItems.splice(index, 1)[0];
+totalAmount -= removedItem.price * removedItem.quantity;
 updateCartUI();
        }
-
+         */  
+       
+         
        function updateCartTotal () {
         cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`;
 
        }
+       //Eventlistener to open cart
        cartIcon.addEventListener('click', () => {
         sidebar.classList.toggle('open');
        });
 
+       //Eventlistener to close cart /sidebar
        const closeButton = document.querySelector('.sidebar-close');
 closeButton.addEventListener('click', () =>{
 sidebar.classList.remove('open');  
  });
 });
 
+//Eventlistener for searchbar to filter products
 document.getElementById("searchBar").addEventListener('input', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filteredItems = cartItems.filter((item) => {
