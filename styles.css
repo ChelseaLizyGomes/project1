@@ -107,7 +107,7 @@ body{
 }
 
 .cover{
-    background-image:url('cover.webp');
+    background-image:url('assets/images/cover.webp');
     background-size: cover;
     height: 40vh;
     background-position: center;
