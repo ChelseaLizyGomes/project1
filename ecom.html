@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce Website</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -14,7 +14,6 @@
         <nav class="header--bar">
             <div class="icon">
                 <i class="fa-solid fa-bars"></i>
-
             </div>
             <h1>EASTSIDE</h1>
             <div class="search--box">
@@ -30,12 +29,22 @@
             </div>
         </nav>
     </header>
+     <!-- Notification Box -->
+<div id="notificationBox" class="notification-box">
+    <span id="notificationText"></span>
+</div>
 
     <section class="cover">
         <div class="cover--overlay">
             <h1>Top Discounts</h1>
             <span class="slogan"> Grab your favourite products before they are Gone</span>
         </div>
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+              An example success alert with an icon
+            </div>
+          </div>
     </section>
     <main>
         <h2 class="section-heading">Latest fashion</h2>
@@ -87,13 +96,20 @@
 
         <h2 class="section-heading">Womens Dresses</h2>
         <div class="card--list">
-
             <div class="card">
                 <img src="assets/images/WomenD1.webp" />
                 <h4 class="card--title">Knee-length Party Dotted Dress</h4>
                 <div class="card--price">
                     <div class="price">Rs.1200</div>
                     <button class="add-to-cart">Add to cart</button>
+                    <select class="size">
+                    <option>select size</option>
+                    <option>small</option>
+                    <option>medium</option>
+                    <option>large</option>
+                    <option>extra large</option></select>
+                    <label for="quantity" class="quantity">Quantity:</label>
+  <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
                 </div>
             </div>
 
@@ -112,8 +128,10 @@
                 <div class="card--price">
                     <div class="price">Rs.598</div>
                     <button class="add-to-cart">Add to cart</button>
+                     <!--<button class="add-to-cart" onclick="showNotification()">Add to cart</button>-->
                 </div>
             </div>
+           
 
             <div class="card">
                 <img src="assets/images/WomenD4.jpg" />
