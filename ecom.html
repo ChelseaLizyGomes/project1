@@ -18,7 +18,7 @@
             <h1>EASTSIDE</h1>
             <div class="search--box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search...." id="searchBar" >
+                <input type="text" placeholder="Search...." id="searchBar">
             </div>
 
             <div class="icons">
@@ -29,10 +29,10 @@
             </div>
         </nav>
     </header>
-     <!-- Notification Box -->
-<div id="notificationBox" class="notification-box">
-    <span id="notificationText"></span>
-</div>
+    <!-- Notification Box -->
+    <div id="notificationBox" class="notification-box">
+        <span id="notificationText"></span>
+    </div>
 
     <section class="cover">
         <div class="cover--overlay">
@@ -40,11 +40,13 @@
             <span class="slogan"> Grab your favourite products before they are Gone</span>
         </div>
         <div class="alert alert-success d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                <use xlink:href="#check-circle-fill" />
+            </svg>
             <div>
-              An example success alert with an icon
+                An example success alert with an icon
             </div>
-          </div>
+        </div>
     </section>
     <main>
         <h2 class="section-heading">Latest fashion</h2>
@@ -94,23 +96,47 @@
 
         </div>
 
-        <h2 class="section-heading">Womens Dresses</h2>
+        <h2 class="section-heading">Women Dresses</h2>
         <div class="card--list">
             <div class="card">
                 <img src="assets/images/WomenD1.webp" />
                 <h4 class="card--title">Knee-length Party Dotted Dress</h4>
                 <div class="card--price">
                     <div class="price">Rs.1200</div>
-                    <button class="add-to-cart">Add to cart</button>
-                    <select class="size">
+                    <div class="size">
+                        <label class="size-option">
+                            <input type="radio" name="size" value="small">
+                            <span class="size-label">S</span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="medium">
+                            <span class="size-label">M</span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="large">
+                            <span class="size-label">L</span>
+                        </label>
+                       
+                            </div>
+                    <!-- <select class="sizes">
                     <option>select size</option>
                     <option>small</option>
                     <option>medium</option>
                     <option>large</option>
-                    <option>extra large</option></select>
-                    <label for="quantity" class="quantity">Quantity:</label>
+                    <option>extra large</option></select>-->
+                    <!--<label for="quantity" class="quantity">Quantity:</label>
   <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+  
+  <div class="sizes">
+                            <input type="radio" name="size" value="small">
+                            <label>Small</label>
+                            <input type="radio" name="size" value="medium">
+                            <label>Medium</label>
+                            <input type="radio" name="size" value="large">
+                            <label>Large</label><br>
+                    </div>-->
                 </div>
+                <button class="add-to-cart">Add to cart</button>
             </div>
 
             <div class="card">
@@ -128,10 +154,10 @@
                 <div class="card--price">
                     <div class="price">Rs.598</div>
                     <button class="add-to-cart">Add to cart</button>
-                     <!--<button class="add-to-cart" onclick="showNotification()">Add to cart</button>-->
+                    <!--<button class="add-to-cart" onclick="showNotification()">Add to cart</button>-->
                 </div>
             </div>
-           
+
 
             <div class="card">
                 <img src="assets/images/WomenD4.jpg" />
@@ -282,7 +308,7 @@
             <div class="cart-menu">
                 <h3>My Cart</h3>
                 <div class="cart-tems"></div>
-                
+
             </div>
 
             <div class="sidebar--footer">

@@ -39,8 +39,8 @@ function showNotification() {
                     document.querySelectorAll('.price')[index].textContent.slice(3),
                 ),
                 quantity: 1,
+                size: document.querySelectorAll('.size')
                 //quantity: document.querySelectorAll('.quantity')[index].textContent,
-
             };
             //alert("Your Item is Sucessfully Added to Cart");
             showNotification()
@@ -88,20 +88,32 @@ function showNotification() {
 
 
     function updateCartItemList(items = cartItems) {
+         // Clear the existing content of cartItemsList
         cartItemsList.innerHTML = '';
-        items.forEach((item, index) => { //iterates over each item 
-            const cartItem = document.createElement('div');
+
+        items.forEach((item, index) => { // Iterate over each item in the items array
+
+            const cartItem = document.createElement('div'); // Create a new div element for each item
             cartItem.classList.add('cart-item', 'individual-cart-item');
+
+            const selectedSize = document.querySelector('input[name="size"]:checked');
+            const sizeValue = selectedSize.value;
+                
+            
+            // Set the innerHTML of the cartItem div using a template literal
             cartItem.innerHTML = `
             <div class='cart-item-display'>
             <div class='row-img'>
                 <img class='rowimg' src=${item.image}>
             </div>
                 <span>(${item.quantity}x) ${item.name}</span>
+                <span>(${sizeValue})</span>
                 <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
                 <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
                 </div>
                 `;
+
+                // Append the created cartItem div to cartItemsList
             cartItemsList.appendChild(cartItem);
         });
 
