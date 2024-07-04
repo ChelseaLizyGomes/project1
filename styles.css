@@ -218,10 +218,13 @@ body{
     width: 100%;
 }
  .card--list{
-    display: flex;
-    gap: 30px;
-   /*flex-wrap:wrap;*/
+    /*display: flex;
+
+   flex-wrap:wrap;*/
     margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     
  }
  .exploreMore { 
@@ -236,7 +239,7 @@ body{
     gap: 60px;
  }
  .card{
-    width: 210px;
+    width: 280px;
     display:flex;
     align-items: center;
     flex-direction: column;
@@ -292,9 +295,16 @@ body{
     background-color: #02283e;
     box-shadow:rgba(255, 243, 243, 0.3) 0px 4px 4px, rgb(44, 112, 112)0px 0px 0px 3px;
  }
- .size {
+  /*.size {
     margin-bottom: 10px;
-}
+    display: flex;
+ }
+.quantity {
+    align-items: left;
+ }
+ .quantity input{
+    border: 1px solid #ccc;
+    border-radius: 50%;*/
 
 .size-option {
     display: inline-block;
@@ -307,7 +317,7 @@ body{
 .size-option .size-label {
     display: inline-block;
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 4px 6px;
     border: 1px solid #ccc;
     border-radius: 50%;
 }
@@ -319,7 +329,8 @@ body{
 }
 
 .size-option .size-label:hover {
-    background-color: #f0f0f0;
+    background-color: rgb(44, 112, 112);
+    color: #fff;
 }
 
  .sidebar {

@@ -6,76 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartIcon = document.querySelector('.cart-icon');
     const sidebar = document.getElementById('sidebar');
 
-
     let cartItems = [];
     let totalAmount = 0;
 
-// JavaScript to show the notification
-function showNotification() {
-    var notificationBox = document.getElementById("notificationBox");
-    var notificationText = document.getElementById("notificationText");
-    
-    notificationText.textContent = 'Item Added to cart!';
-    notificationBox.style.display = 'block';
-    
-    // Hide the notification after a delay (e.g., 1 second)
-    setTimeout(function() {
-      notificationBox.style.display = 'none';
-    }, 1000); // Adjust the delay as needed
-  }
+    // function to show the notification (when item added to cart)
+    function showNotification() {
+        var notificationBox = document.getElementById("notificationBox");
+        var notificationText = document.getElementById("notificationText");
+
+        notificationText.textContent = 'Item Added to cart!';
+        notificationBox.style.display = 'block';
+
+        // Hide the notification after a delay (e.g., 1 second)
+        setTimeout(function () {
+            notificationBox.style.display = 'none';
+        }, 1000); // Adjust the delay as needed
+    }
 
     //Add to cart - item (to render the cart items properly)
     // When the add-to-cart button is clicked, it constructs an object (item) representing the item to be added to the cart.
     addToCartButtons.forEach((button, index) => {
-
         button.addEventListener('click', () => {
 
             const item = {
                 image: document.querySelectorAll('.card img')[index].src,
-
                 name: document.querySelectorAll('.card .card--title')[index].textContent,
-
                 price: parseFloat(
-                    document.querySelectorAll('.price')[index].textContent.slice(3),
-                ),
-                quantity: 1,
-                size: document.querySelectorAll('.size')
-                //quantity: document.querySelectorAll('.quantity')[index].textContent,
+                    document.querySelectorAll('.price')[index].textContent.slice(3)),
+                size: document.querySelector('input[name="size"]:checked').value,
+                quantity: parseInt(document.getElementById('quantity').value),
             };
-            //alert("Your Item is Sucessfully Added to Cart");
+
             showNotification()
 
             //quantity and total price 
-            const exisitingItem = cartItems.find(
-                (cartItem) => cartItem.name === item.name,
-            );
-            if (exisitingItem) {
-                exisitingItem.quantity++; //will increase the quantity if same item is added to cart
+            const existingItem = cartItems.find((cartItem) => cartItem.name === item.name && cartItem.size === item.size,);
+            if (existingItem) {
+                existingItem.quantity += item.quantity;
+            } else {
+                cartItems.push(item);
             }
-            else {
-                cartItems.push(item); //will push the new item thats added to cart 
-            }
-            totalAmount += item.price;
+            totalAmount += item.price * item.quantity;
 
             updateCartUI();
-
         });
     });
 
-
-    /* const exisitingItem = cartItems.find(
-         (cartItem) => cartItem.name === item.name,
-     );
-     do{
-         cartItems.push(item)
-     }
-     while(totalAmount += item.price)
-     
- 
-     updateCartUI();
- 
- });
- });*/
     function updateCartUI() {
         updateCartItemCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
         updateCartItemList();
@@ -86,9 +62,8 @@ function showNotification() {
         cartItemCount.textContent = count;
     }
 
-
     function updateCartItemList(items = cartItems) {
-         // Clear the existing content of cartItemsList
+        // Clear the existing content of cartItemsList
         cartItemsList.innerHTML = '';
 
         items.forEach((item, index) => { // Iterate over each item in the items array
@@ -96,10 +71,6 @@ function showNotification() {
             const cartItem = document.createElement('div'); // Create a new div element for each item
             cartItem.classList.add('cart-item', 'individual-cart-item');
 
-            const selectedSize = document.querySelector('input[name="size"]:checked');
-            const sizeValue = selectedSize.value;
-                
-            
             // Set the innerHTML of the cartItem div using a template literal
             cartItem.innerHTML = `
             <div class='cart-item-display'>
@@ -107,13 +78,12 @@ function showNotification() {
                 <img class='rowimg' src=${item.image}>
             </div>
                 <span>(${item.quantity}x) ${item.name}</span>
-                <span>(${sizeValue})</span>
+                <span>(${item.size})</span>
                 <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
                 <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
-                </div>
-                `;
+                </div>`;
 
-                // Append the created cartItem div to cartItemsList
+            // Append the created cartItem div to cartItemsList
             cartItemsList.appendChild(cartItem);
         });
 
@@ -130,11 +100,9 @@ function showNotification() {
         });
     }
 
-
     function removeItemFromCart(index) {
-        const removeItem = cartItems.splice(index, 1)[0];
+        const removeItem = cartItems.splice(index,1)[0];
         totalAmount -= removeItem.price * removeItem.quantity;
-        console.log("Item removed:", removeItem);
 
         updateCartUI();
     }
