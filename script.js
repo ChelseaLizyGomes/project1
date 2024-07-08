@@ -124,11 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //Eventlistener for searchbar to filter products
-document.getElementById("searchBar").addEventListener('input', (e) => {
+/*/document.getElementById("searchBar").addEventListener('input', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filteredItems = cartItems.filter((item) => {
         return item.name.toLowerCase().includes(searchData);
     });
     updateCartItemList(filteredItems);
-});
+});*/
 
+// Search functionality
+document.getElementById("searchBar").addEventListener('input', (e) => {
+    const searchData = e.target.value.toLowerCase();
+    const filteredItems = cartItems.filter(item => item.name.toLowerCase().includes(searchData));
+
+    updateCartItemList(filteredItems);
+});

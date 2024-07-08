@@ -217,27 +217,21 @@ body{
 .each--product img{
     width: 100%;
 }
- .card--list{
+ .card--list, .explore--list {
     /*display: flex;
-
    flex-wrap:wrap;*/
     margin-bottom: 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    
  }
  .exploreMore { 
     background-color: #02283e;
     padding: 5px 5px;
     color: beige;
     margin-bottom: 2rem;
+ }
 
- }
- .explore--list {
-    display: flex;
-    gap: 60px;
- }
  .card{
     width: 280px;
     display:flex;
@@ -435,4 +429,68 @@ body{
     max-height: 70px;
     border-radius: 4%;
 }
+/*footer*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .site-footer {
+    box-shadow: 0 5px 15px rgb(148, 149, 142);
+    background-color:#02283e;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    /*list-style-type: none;*/
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ffd700;
+  }
+  
+  .social-links {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
 
