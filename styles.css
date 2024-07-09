@@ -292,13 +292,15 @@ body{
   /*.size {
     margin-bottom: 10px;
     display: flex;
- }
+ }*/
 .quantity {
     align-items: left;
  }
  .quantity input{
     border: 1px solid #ccc;
-    border-radius: 50%;*/
+   width: 30px;
+   margin: 10px 10px;
+    }
 
 .size-option {
     display: inline-block;
@@ -430,10 +432,11 @@ body{
     border-radius: 4%;
 }
 /*footer*/
-.container {
-    max-width: 1200px;
+.footer-container {
+    max-width: 2200px;
     margin: 0 auto;
     padding: 20px;
+    align-items: center;
   }
   
   .site-footer {
@@ -441,6 +444,7 @@ body{
     background-color:#02283e;
     color: #fff;
     padding: 20px 0;
+    align-items: center;
   }
   
   .footer-links {
@@ -452,6 +456,7 @@ body{
   .footer-section {
     flex: 1;
     margin-right: 20px;
+    margin-left: 20px;
   }
   
   .footer-section h3 {
