@@ -86,6 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
             // Append the created cartItem div to cartItemsList
             cartItemsList.appendChild(cartItem);
         });
+       
+        
+        //JSOn
+                // Add event listeners to remove-item buttons
+               /* document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = e.target.closest('.remove-item').dataset.index;
+                        totalAmount -= cartItems[index].price * cartItems[index].quantity;
+                        cartItems.splice(index, 1);
+                        
+                        updateCartUI();
+                    });
+                });
+            }*/
+        
+
 
         //Eventlistener to remove item 
         const removeButtons = document.querySelectorAll('.remove-item');
@@ -108,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateCartTotal() {
-        cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`;
+        cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`; 
 
     }
     //Eventlistener to open cart

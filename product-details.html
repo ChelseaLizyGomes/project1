@@ -7,28 +7,35 @@
     <title>Product-details</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <script src="script.js"> </script>
+
     <style>
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        #prodetails {
+            display: flex;
+            margin-top: 40px;
+        }
 
-.product {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+        #prodetails .single-pro-image {
+            width: 30%;
+            height: 20%;
+            margin-right: 50px;
+        }
 
-.product img {
-    max-width: 100%;
-    height: auto;
-}
+        #prodetails .single-pro-details {
+            width: 50%;
+            padding-top: 30px;
+            align-items: flex-start;
+        }
+
+        #prodetails .single-pro-details h4 {
+            padding: 40px 0px 20px 0px;
+
+        }
     </style>
 </head>
 
 <body>
+    <script src="script.js"> </script>
+
     <header class="header">
         <nav class="header--bar">
             <div class="icon">
@@ -49,11 +56,6 @@
             </div>
         </nav>
     </header>
-    <!--<div class="container">
-        <div class="product" id="product-container">
-             Product details will be inserted here dynamically 
-        </div>
-    </div>-->
     <div class="product-details">
         <div id="productDetailContainer">
             <!-- Product details will be dynamically inserted here -->
@@ -62,153 +64,110 @@
 
 
     <script>
- // Fetch product details based on ID from query parameter
- window.onload = function() {
+
+        // Method to generate HTML for product details
+       /*             <img src="${this.imageUrl}" alt="${this.name}" />
+                 <h4 class="card--title">${this.name}</h4>
+                 <div class="card--price">
+                     <div class="price">Rs.${this.price}</div>
+                     <button class="add-to-cart">Add to cart</button>
+                 </div>
+             </div> `;
+
+              this.size = size;
+                this.quantity = quantity;
+             
+         }
+     }*/
+
+        window.onload = function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const productId = urlParams.get('id'); // Retrieve product ID from URL query parameter
+            const productId = parseInt(urlParams.get('id')); // Retrieve product ID from URL query parameter //to ensure productId is an integer
+            const size = urlParams.get('size'); // Retrieve product size from URL query parameter
+            const quantity = parseInt(urlParams.get('quantity')); // Retrieve product quantity from URL query parameter and ensure it's an integer
 
             // Example: Fetch product details based on productId
             const product = getProductDetails(productId);
 
-            // Example: Display product details on the page
-            const productDetailContainer = document.getElementById('productDetailContainer');
-            productDetailContainer.innerHTML = `
-                <h2>${product.name}</h2>
-                <img src="${product.imageUrl}" alt="${product.name}">
-                <p>${product.description}</p>
-                <p>Price: Rs.${product.price}</p>
-            `;
+            if (product) {
+                // Example: Display product details on the page
+                const productDetailContainer = document.getElementById('productDetailContainer');
+                productDetailContainer.innerHTML = `
+          <section id="prodetails" class="section-p1">
+            <div class="single-pro-image"> 
+                 <img src="${product.imageUrl}" alt="${product.name}" width="100%" id="MainImg"/></div>
+
+                 <div class="single-pro-details">
+                 <h4>${product.name}</h4>
+                 <div class="card--price">
+                     <div class="price">Rs.${product.price}</div>
+                      <div class="size">Size:
+                         <label class="size-option">
+                            <input type="radio" name="size" value="small" ${size === 'small' ? 'checked' : ''}>
+                            <span class="size-label">S</span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="medium" ${size === 'medium' ? 'checked' : ''}>
+                            <span class="size-label">M</span>
+                        </label>
+                        <label class="size-option">
+                            <input type="radio" name="size" value="large" ${size === 'large' ? 'checked' : ''}>
+                            <span class="size-label">L</span>
+                        </label>
+                    </div>
+                    <div class="quantity">
+                        <label for="quantity" class="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" value="${quantity}" min="1">
+                    </div>
+                     <p>${product.description}</p>
+                     <button class="add-to-cart">Add to cart</button>
+                 </div>
+             </div>   
+             </section>
+        `;
+        //<div class="card">
+            } else {
+                console.error('Product not found');
+            }
         };
-
-// Example function to fetch product details (you would replace this with your own logic)
-function getProductDetails(productId) {
-    // Example: Fetch product details from a backend or JSON data
-    const products = [
-        { id: 1, name: 'Product 1', price: 1200, description: 'Lorem ipsum dolor sit amet.', imageUrl: 'assets/images/WomenD1.webp' },
-        { id: 2, name: 'Product 2', price: 700, description: 'Ut enim ad minim veniam.', imageUrl: 'assets/images/WomenD2.jpg' },
-        // Add more products as needed
-    ];
-
-    return products.find(product => product.id == productId);
-}
-
-
-        //Define product class
-        /*class Product {
-            constructor(id,name,price,description,imageUrl){
-                this.id =id;
+        class Product {
+            constructor(id, name, price, description, imageUrl) {
+                this.id = id;
                 this.name = name;
                 this.price = price;
                 this.description = description;
                 this.imageUrl = imageUrl;
             }
-            // Method to generate HTML for product details
-    generateHTML() {
-        return `
-            <div class="card">
-            <img src="${this.imageUrl}" alt="${this.name}" />
-            <h4 class="card--title">${this.name}</h4>
-            <div class="card--price">
-                <div class="price">Rs.${this.price}</div>
-                <button class="add-to-cart" onclick="addToCart(${this.id})">Add to cart</button>
-            </div>
-        </div>`;
-    }
-}
-        // Array of products
-const products = [
-    new Product(
-        1,
-        "Knee-length Party Dotted Dress",
-        1200,
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "assets/images/WomenD1.webp"
-    ),
-    new Product(
-        2,
-        "Office Knee Length Dress",
-        700,
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "assets/images/WomenD2.jpg"
-    ),
-    new Product(
-        3,
-        "Product 3",
-        129.99,
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-        "https://via.placeholder.com/300"
-    )
-];
-// Function to render all products
-function renderProducts(products) {
-    const productContainer = document.getElementById("product-container");
-    productContainer.innerHTML = ""; // Clear previous content
 
-    products.forEach(product => {
-        const productHTML = product.generateHTML();
-        productContainer.innerHTML += productHTML;
-    });
-}
-
-// Render all products on page load
-window.onload = function() {
-    renderProducts(products);
-};
-
-        // get datas product in products.json
-        /*let products = null;
-        fetch('products.json')
-            .then(response => response.json())
-            .then(data => {
-                products = data;
-                showDetail();
-            })
-
-        // find this product
- function showDetail() {
-
-            let detail = document.querySelector('.detail');
-let productId = new URLSearchParams(window.location.sesrch).get('id');
-
-let thisProduct = products.filter(value => {
-                return value.id = productId
-
-            })[0];
-            //if there is no product has id = productid
-            // => return to home page
-
-            if (!thisProduct){
-                window.location.href = "/";
+            static getProductById(productId) {
+                return products.find(product => product.id === productId);
             }
-            //add if has, add data this product in html
-            detail.querySelector('.image img').src = thisProduct.image;
-            detail.querySelector('.name').innerText = thisProduct.name;
-            detail.querySelector('.price').innerText = '$' + thisProduct.price;
-            detail.querySelector('.description').innerText = thisProduct.description;
+        }
 
-            //add datas product similar
+        // Create Product instances
+        const products = [
+            new Product(1,
+                'Knee-length Party Dotted Dress',
+                1200,
+                'Lorem ipsum dolor sit amet.',
+                'assets/images/WomenD1.webp')
+            ,
+            new Product(2,
+                'Office Knee Length Dress',
+                700,
+                'Ut enim ad minim veniam.',
+                'assets/images/WomenD2.jpg')
+            // Add more products as needed
+        ];
 
-            //show all product
-            let listProduct = document.querySelector('.listProduct');
-            (products.filter(value=> c=value.id != productId))
-            .forEach (product=> {
-                let newProduct = document.createElement('a');
-                newProduct.href = '/detail.html?id' = product.id;
-                newProduct.innerHTML = `
-                <img src = "${product.image}">
-                <h2> ${product.name}</h2>
-                <div class="price">${product.price}</div>`;
-            })*/
-
-          
-                
-
-</script>
+        //calls the static getProductById method of the Product class to fetch the product details.
+        function getProductDetails(productId) {
+            return Product.getProductById(productId);
+        }
 
 
-   
 
-   
+    </script>
 
 
 </body>
