@@ -5,11 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartTotal = document.querySelector('.cart-total');
     const cartIcon = document.querySelector('.cart-icon');
     const sidebar = document.getElementById('sidebar');
+    const closeButton = document.querySelector('.sidebar-close');
 
     let cartItems = [];
     let totalAmount = 0;
 
-    // function to show the notification (when item added to cart)
+    // Listen for messages from product.html to add item to cart
+    window.addEventListener('message', event => {
+        const { action, item } = event.data;
+        if (action === 'add-to-cart') {
+            const existingItem = cartItems.find(cartItem =>
+                cartItem.name === item.name && cartItem.size === item.size
+            );
+
+            if (existingItem) {
+                existingItem.quantity += item.quantity;
+            } else {
+                cartItems.push(item);
+            }
+            totalAmount += item.price * item.quantity;
+
+            updateCartUI();
+            showNotification();
+        }
+    });
+
     function showNotification() {
         var notificationBox = document.getElementById("notificationBox");
         var notificationText = document.getElementById("notificationText");
@@ -23,32 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000); // Adjust the delay as needed
     }
 
-    //Add to cart - item (to render the cart items properly)
-    // When the add-to-cart button is clicked, it constructs an object (item) representing the item to be added to the cart.
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-
             const item = {
-                image: document.querySelectorAll('.card img')[index].src,
+                id: parseInt(button.getAttribute('data-id')),
                 name: document.querySelectorAll('.card .card--title')[index].textContent,
-                price: parseFloat(
-                    document.querySelectorAll('.price')[index].textContent.slice(3)),
+                price: parseFloat(document.querySelectorAll('.price')[index].textContent.slice(3)),
                 size: document.querySelector('input[name="size"]:checked').value,
                 quantity: parseInt(document.getElementById('quantity').value),
+                imageUrl: document.querySelectorAll('.card img')[index].src
             };
 
-            showNotification()
-
-            //quantity and total price 
-            const existingItem = cartItems.find((cartItem) => cartItem.name === item.name && cartItem.size === item.size,);
-            if (existingItem) {
-                existingItem.quantity += item.quantity;
-            } else {
-                cartItems.push(item);
-            }
-            totalAmount += item.price * item.quantity;
-
-            updateCartUI();
+            // Simulate adding to cart for demonstration
+            window.parent.postMessage({ action: 'add-to-cart', item: item }, '*');
         });
     });
 
@@ -58,100 +65,64 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartTotal();
     }
 
-    function updateCartItemCount(count) { // the total number of items in the cart
+    function updateCartItemCount(count) {
         cartItemCount.textContent = count;
     }
 
-    function updateCartItemList(items = cartItems) {
-        // Clear the existing content of cartItemsList
+    function updateCartItemList() {
         cartItemsList.innerHTML = '';
 
-        items.forEach((item, index) => { // Iterate over each item in the items array
-
-            const cartItem = document.createElement('div'); // Create a new div element for each item
+        cartItems.forEach((item, index) => {
+            const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item', 'individual-cart-item');
-
-            // Set the innerHTML of the cartItem div using a template literal
             cartItem.innerHTML = `
-            <div class='cart-item-display'>
-            <div class='row-img'>
-                <img class='rowimg' src=${item.image}>
-            </div>
-                <span>(${item.quantity}x) ${item.name}</span>
-                <span>(${item.size})</span>
-                <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
-                <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
-                </div>`;
-
-            // Append the created cartItem div to cartItemsList
+                <div class='cart-item-display'>
+                    <div class='row-img'>
+                        <img class='rowimg' src=${item.imageUrl}>
+                    </div>
+                    <span>(${item.quantity}x) ${item.name}</span>
+                    <span>(${item.size})</span>
+                    <span class="cart-item-price">Rs.${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-item" data-index="${index}"><i class="fa-solid fa-times"></i></button> 
+                </div>
+            `;
             cartItemsList.appendChild(cartItem);
-        });
-       
-        
-        //JSOn
-                // Add event listeners to remove-item buttons
-               /* document.querySelectorAll('.remove-item').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const index = e.target.closest('.remove-item').dataset.index;
-                        totalAmount -= cartItems[index].price * cartItems[index].quantity;
-                        cartItems.splice(index, 1);
-                        
-                        updateCartUI();
-                    });
-                });
-            }*/
-        
 
-
-        //Eventlistener to remove item 
-        const removeButtons = document.querySelectorAll('.remove-item');
-        removeButtons.forEach((button) => {
-            button.addEventListener('click', (event) => {
-                const index = parseInt(event.target.dataset.index); // Parse the index as integer
-
-                console.log("Index to remove:", index);
-
+            // Event listener to remove item
+            const removeButton = cartItem.querySelector('.remove-item');
+            removeButton.addEventListener('click', () => {
                 removeItemFromCart(index);
             });
         });
     }
 
     function removeItemFromCart(index) {
-        const removeItem = cartItems.splice(index,1)[0];
-        totalAmount -= removeItem.price * removeItem.quantity;
+        const removedItem = cartItems.splice(index, 1)[0];
+        totalAmount -= removedItem.price * removedItem.quantity;
 
         updateCartUI();
     }
 
     function updateCartTotal() {
-        cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`; 
-
+        cartTotal.textContent = `Rs.${totalAmount.toFixed(2)}`;
     }
-    //Eventlistener to open cart
+
+    // Event listener to open cart
     cartIcon.addEventListener('click', () => {
         sidebar.classList.toggle('open');
     });
 
-    //Eventlistener to close cart /sidebar
-    const closeButton = document.querySelector('.sidebar-close');
+    // Event listener to close cart / sidebar
     closeButton.addEventListener('click', () => {
         sidebar.classList.remove('open');
     });
-});
 
-//Eventlistener for searchbar to filter products
-/*/document.getElementById("searchBar").addEventListener('input', (e) => {
-    const searchData = e.target.value.toLowerCase();
-    const filteredItems = cartItems.filter((item) => {
-        return item.name.toLowerCase().includes(searchData);
-    });
-    updateCartItemList(filteredItems);
-});*/
-
-// Search functionality
+    //Eventlistener for searchbar to filter products
 document.getElementById("searchBar").addEventListener('input', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filteredItems = cartItems.filter(item => item.name.toLowerCase().includes(searchData));
-
     updateCartItemList(filteredItems);
 });
+
+});
+

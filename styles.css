@@ -168,6 +168,7 @@ body{
     display: none;
     z-index: 1000;/* Ensure it's above other elements */
   }
+
 .cover{
     background-image:url('assets/images/cover.webp');
     background-size: cover;
