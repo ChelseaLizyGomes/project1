@@ -1,129 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
     <title>Product-details</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
 
     <style>
-        #prodetails {
-            display: flex;
-            margin-top: 40px;
-        }
+      #prodetails {
+        display: flex;
+        margin-top: 40px;
+      }
 
-        #prodetails .single-pro-image {
-            width: 30%;
-            height: 20%;
-            margin-right: 50px;
-        }
+      #prodetails .single-pro-image {
+        width: 30%;
+        height: 20%;
+        margin-right: 50px;
+      }
 
-        #prodetails .single-pro-details {
-            width: 50%;
-            padding-top: 30px;
-            align-items: flex-start;
-        }
+      #prodetails .single-pro-details {
+        width: 50%;
+        padding-top: 30px;
+        align-items: flex-start;
+      }
 
-        #prodetails .single-pro-details h4 {
-            padding: 40px 0px 20px 0px;
-            text-align: left;
-        }
+      #prodetails .single-pro-details h4 {
+        padding: 40px 0px 20px 0px;
+        text-align: left;
+      }
 
-        #prodetails .single-pro-details,
-        .card--price,
-        .price,
-        .size,
-        .size-option,
-        .quantity,
-        .description {
-            text-align: left;
-        }
+      #prodetails .single-pro-details,
+      .card--price,
+      .price,
+      .size,
+      .size-option,
+      .quantity,
+      .description {
+        text-align: left;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <header class="header">
-        <nav class="header--bar">
-            <div class="icon">
-                <i class="fa-solid fa-bars"></i>
+      <nav class="header--bar">
+        <div class="icon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <h1>EASTSIDE</h1>
+        <div class="search--box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search...." id="searchBar" />
+        </div>
 
-            </div>
-            <h1>EASTSIDE</h1>
-            <div class="search--box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search...." id="searchBar">
-            </div>
-
-            <div class="icons">
-                <div class="cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>0</span>
-                </div>
-            </div>
-        </nav>
+        <div class="icons">
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>0</span>
+          </div>
+        </div>
+      </nav>
     </header>
     <div class="product-details">
-        <div id="productDetailContainer">
-            <!-- Product details will be dynamically inserted here -->
-        </div>
+      <div id="productDetailContainer">
+        <!-- Product details will be dynamically inserted here -->
+      </div>
     </div>
     <!-- Notification Box -->
     <div id="notificationBox" class="notification-box">
-        <span id="notificationText"></span>
+      <span id="notificationText"></span>
     </div>
 
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-close">
-            <i class="fa-solid fa-close"></i>
+      <div class="sidebar-close">
+        <i class="fa-solid fa-close"></i>
+      </div>
+      <div class="cart-menu">
+        <h3>My Cart</h3>
+        <div class="cart-tems"></div>
+      </div>
+      <div class="sidebar--footer">
+        <div class="total--amount">
+          <h5>Total</h5>
+          <div class="cart-total"></div>
         </div>
-        <div class="cart-menu">
-            <h3>My Cart</h3>
-            <div class="cart-tems"></div>
-        </div>
-        <div class="sidebar--footer">
-            <div class="total--amount">
-                <h5>Total</h5>
-                <div class="cart-total"></div>
-            </div>
-            <button class="checkout-btn">Checkout</button>
-        </div>
+        <button class="checkout-btn">Checkout</button>
+      </div>
     </div>
 
     <script>
+      window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get("id")); // Retrieve product ID from URL query parameter
+        const size = urlParams.get("size"); // Retrieve product size from URL query parameter
+        const quantity = parseInt(urlParams.get("quantity")); // Retrieve product quantity from URL query parameter and ensure it's an integer
 
-        window.onload = function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const productId = parseInt(urlParams.get('id')); // Retrieve product ID from URL query parameter
-            const size = urlParams.get('size'); // Retrieve product size from URL query parameter
-            const quantity = parseInt(urlParams.get('quantity')); // Retrieve product quantity from URL query parameter and ensure it's an integer
+        function showNotification() {
+          var notificationBox = document.getElementById("notificationBox");
+          var notificationText = document.getElementById("notificationText");
 
-            function showNotification() {
-                var notificationBox = document.getElementById("notificationBox");
-                var notificationText = document.getElementById("notificationText");
+          notificationText.textContent = "Item Added to cart!";
+          notificationBox.style.display = "block";
 
-                notificationText.textContent = 'Item Added to cart!';
-                notificationBox.style.display = 'block';
+          // Hide the notification after a delay (e.g., 1 second)
+          setTimeout(function () {
+            notificationBox.style.display = "none";
+          }, 1000); // Adjust the delay as needed
+        }
 
-                // Hide the notification after a delay (e.g., 1 second)
-                setTimeout(function () {
-                    notificationBox.style.display = 'none';
-                }, 1000); // Adjust the delay as needed
-            }
+        // Example: Fetch product details based on productId
+        const product = getProductDetails(productId);
 
-            // Example: Fetch product details based on productId
-            const product = getProductDetails(productId);
-
-            if (product) {
-                // Display product details on the page
-                const productDetailContainer = document.getElementById('productDetailContainer');
-                productDetailContainer.innerHTML = `
+        if (product) {
+          // Display product details on the page
+          const productDetailContainer = document.getElementById(
+            "productDetailContainer"
+          );
+          productDetailContainer.innerHTML = `
             <section id="prodetails" class="section-p1">
                 <div class="single-pro-image"> 
-                    <img src="${product.imageUrl}" alt="${product.name}" width="100%" id="MainImg"/>
+                    <img src="${product.imageUrl}" alt="${
+            product.name
+          }" width="100%" id="MainImg"/>
                 </div>
                 <div class="single-pro-details">
                     <h4>${product.name}</h4>
@@ -131,15 +133,21 @@
                         <div class="price">Rs.${product.price}</div>
                         <div class="size">Size:
                             <label class="size-option">
-                                <input type="radio" name="size" value="small" ${size === 'small' ? 'checked' : ''}>
+                                <input type="radio" name="size" value="small" ${
+                                  size === "small" ? "checked" : ""
+                                }>
                                 <span class="size-label">S</span>
                             </label>
                             <label class="size-option">
-                                <input type="radio" name="size" value="medium" ${size === 'medium' ? 'checked' : ''}>
+                                <input type="radio" name="size" value="medium" ${
+                                  size === "medium" ? "checked" : ""
+                                }>
                                 <span class="size-label">M</span>
                             </label>
                             <label class="size-option">
-                                <input type="radio" name="size" value="large" ${size === 'large' ? 'checked' : ''}>
+                                <input type="radio" name="size" value="large" ${
+                                  size === "large" ? "checked" : ""
+                                }>
                                 <span class="size-label">L</span>
                             </label>
                         </div>
@@ -148,75 +156,77 @@
                             <input type="number" id="quantity" name="quantity" value="${quantity}" min="1">
                         </div>
                         <p class="description">${product.description}</p>
-                        <button class="add-to-cart" data-id="${product.id}">Add to cart</button>
+                        <button class="add-to-cart" data-id="${
+                          product.id
+                        }">Add to cart</button>
                     </div>
                 </div>   
             </section>
         `;
 
-                // Add event listener for add to cart button
-                const addToCartButton = document.querySelector('.add-to-cart');
-                addToCartButton.addEventListener('click', () => {
-                    const item = {
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        imageUrl: product.imageUrl,
-                        size: document.querySelector('input[name="size"]:checked').value,
-                        quantity: parseInt(document.getElementById('quantity').value)
-                    };
+          // Add event listener for add to cart button
+          const addToCartButton = document.querySelector(".add-to-cart");
+          addToCartButton.addEventListener("click", () => {
+            const item = {
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              imageUrl: product.imageUrl,
+              size: document.querySelector('input[name="size"]:checked').value,
+              quantity: parseInt(document.getElementById("quantity").value),
+            };
 
-                    // Send the item data to the main page to add to cart
-                    window.parent.postMessage({ action: 'add-to-cart', item: item }, '*');
+            // Send the item data to the main page to add to cart
+            window.parent.postMessage(
+              { action: "add-to-cart", item: item },
+              "*"
+            );
 
-                    showNotification()
-                });
+            showNotification();
+          });
+        } else {
+          console.error("Product not found");
+        }
+      };
 
-            } else {
-                console.error('Product not found');
-            }
-        };
-
-        class Product {
-            constructor(id, name, price, description, imageUrl) {
-                this.id = id;
-                this.name = name;
-                this.price = price;
-                this.description = description;
-                this.imageUrl = imageUrl;
-            }
-
-            static getProductById(productId) {
-                return products.find(product => product.id === productId);
-            }
+      class Product {
+        constructor(id, name, price, description, imageUrl) {
+          this.id = id;
+          this.name = name;
+          this.price = price;
+          this.description = description;
+          this.imageUrl = imageUrl;
         }
 
-        // Example products data
-        const products = [
-            new Product(1,
-                'Knee-length Party Dotted Dress',
-                1200,
-                'Classy 1950s Style Polka Dot Dress: Square Neckline, Mini Bowknot at Bust Area with Cut Out Design, High Waist, Fit Flare Style, Zip in Back. Perfect for Daily Casual, Dating, Vintage Fashion Show, Cocktail Party, Tea Party, Theme Costume Wear or other Special Occasions..',
-                'assets/images/WomenD1.webp'
-            ),
-            new Product(2,
-                'Office Knee Length Dress',
-                700,
-                'Office Women Knee Length Dress | Women Fit and Flare Knee-Length Dress will help you embrace elegance. Its fit-and-flare style will highlight your curves and keep you comfortable for the entire day. Its timeless silhouette and elegant neckline exudes sophistication and comfort at the same time. Last but not least, turn heads in our Mock Neck Crepe Fit and Flare Dress made from opulent crepe fabric, it has a mock neckline that gives it a contemporary twist',
-                'assets/images/WomenD2.jpg'
-            )
-            // Add more products as needed
-        ];
-
-        function getProductDetails(productId) {
-            return Product.getProductById(productId);
+        static getProductById(productId) {
+          return products.find((product) => product.id === productId);
         }
+      }
 
+      // Example products data
+      const products = [
+        new Product(
+          1,
+          "Knee-length Party Dotted Dress",
+          1200,
+          "Classy 1950s Style Polka Dot Dress: Square Neckline, Mini Bowknot at Bust Area with Cut Out Design, High Waist, Fit Flare Style, Zip in Back. Perfect for Daily Casual, Dating, Vintage Fashion Show, Cocktail Party, Tea Party, Theme Costume Wear or other Special Occasions..",
+          "assets/images/WomenD1.webp"
+        ),
+        new Product(
+          2,
+          "Office Knee Length Dress",
+          700,
+          "Office Women Knee Length Dress | Women Fit and Flare Knee-Length Dress will help you embrace elegance. Its fit-and-flare style will highlight your curves and keep you comfortable for the entire day. Its timeless silhouette and elegant neckline exudes sophistication and comfort at the same time. Last but not least, turn heads in our Mock Neck Crepe Fit and Flare Dress made from opulent crepe fabric, it has a mock neckline that gives it a contemporary twist",
+          "assets/images/WomenD2.jpg"
+        ),
+        // Add more products as needed
+      ];
 
+      function getProductDetails(productId) {
+        return Product.getProductById(productId);
+      }
     </script>
 
-    <script src="script.js"> </script>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
