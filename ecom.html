@@ -1,822 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ecommerce Website</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <header class="header">
-        <nav class="header--bar">
-            <div class="icon">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <h1>EASTSIDE</h1>
-            <div class="search--box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search...." id="searchBar">
-            </div>
+      <nav class="header--bar">
+        <div class="icon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <h1>EASTSIDE</h1>
+        <div class="search--box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search...." id="searchBar" />
+        </div>
 
-            <div class="icons">
-                <div class="cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>0</span>
-                </div>
-            </div>
-        </nav>
+        <div class="icons">
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>0</span>
+          </div>
+        </div>
+      </nav>
     </header>
     <!-- Notification Box -->
     <div id="notificationBox" class="notification-box">
-        <span id="notificationText"></span>
+      <span id="notificationText"></span>
     </div>
 
     <section class="cover">
-        <div class="cover--overlay">
-            <h1>Top Discounts</h1>
-            <span class="slogan"> Grab your favourite products before they are Gone</span>
-        </div>
+      <div class="cover--overlay">
+        <h1>Top Discounts</h1>
+        <span class="slogan">
+          Grab your favourite products before they are Gone</span
+        >
+      </div>
     </section>
     <main>
-        <h2 class="section-heading">Latest fashion</h2>
-        <div class="products--list">
-            <div class="each--product">
-                <img src="assets/images/dress.png" />
-                <h2>Dresses</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/bags.png" />
-                <h2>Bags</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/shoes.jpg" />
-                <h2>Heels</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/menShirt.jpeg" />
-                <h2>Shirts</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/menShoes.jpg" />
-                <h2>Sneakers</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/menWatch.jpg" />
-                <h2>Watches</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/baggytshirt.webp" />
-                <h2>Tshirts</h2>
-            </div>
-            <div class="each--product">
-                <img src="assets/images/bags.jpg" />
-                <h2>Backpacks</h2>
-            </div>
-
-            <div class="each--product">
-                <img src="assets/images/womensPants.webp" />
-                <h2>Pants</h2>
-            </div>
-
-            <div class="each--product">
-                <img src="assets/images/jewellery.jpg" />
-                <h2>jewellery</h2>
-            </div>
-
+      <h2 class="section-heading">Latest fashion</h2>
+      <div class="products--list">
+        <div class="each--product">
+          <img src="assets/images/dress.png" />
+          <h2>Dresses</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/bags.png" />
+          <h2>Bags</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/shoes.jpg" />
+          <h2>Heels</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/menShirt.jpeg" />
+          <h2>Shirts</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/menShoes.jpg" />
+          <h2>Sneakers</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/menWatch.jpg" />
+          <h2>Watches</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/baggytshirt.webp" />
+          <h2>Tshirts</h2>
+        </div>
+        <div class="each--product">
+          <img src="assets/images/bags.jpg" />
+          <h2>Backpacks</h2>
         </div>
 
-        <h2 class="section-heading">Women Dresses</h2>
-        <div class="card--list">
-            <div class="card" id="1">
-                <img src="assets/images/WomenD1.webp" />
-                <a href="product-details.html?id=1">
-                    <h4 class="card--title">Knee-length Party Dotted Dress</h4>
-                </a>
-                <div class="card--price">
-                    <div class="price">Rs.1200</div>
-                    <div class="size">Size:
-
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/WomenD2.jpg" />
-                <a href="product-details.html?id=2">
-                    <h4 class="card--title">Office Knee Length Dress</h4>
-                </a>
-                <div class="card--price">
-                    <div class="price">Rs.700</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="assets/images/WomenD3.jpg" />
-                <h4 class="card--title">Long Silk Summer Dress</h4>
-                <div class="card--price">
-                    <div class="price">Rs.598</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <img src="assets/images/WomenD4.jpg" />
-                <h4 class="card--title">Bodycon Western Office Dress</h4>
-                <div class="card--price">
-                    <div class="price">Rs.400</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/WomenD5.jpg" />
-                <h4 class="card--title">Georgtte Print Flared Dress </h4>
-                <div class="card--price">
-                    <div class="price">Rs.850</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="assets/images/WomenD6.jpg" />
-                <h4 class="card--title">Lace Overlaid Regular Dress</h4>
-                <div class="card--price">
-                    <div class="price">Rs.900</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/WomenD7.jpg" />
-                <h4 class="card--title">Lace Overlaid Regular Dress</h4>
-                <div class="card--price">
-                    <div class="price">Rs.900</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/WomenD8.jpg" />
-                <h4 class="card--title">Plus Size Layered Maxi Dress</h4>
-                <div class="card--price">
-                    <div class="price">Rs.2900</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="Large">
-                            <span class="size-label">L</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="Extra Large">
-                            <span class="size-label">XL</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="Double Extra Large">
-                            <span class="size-label">XXL</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <br>
-        <hr>
-        <h2 class="section-heading">Men's Shirts</h2>
-        <div class="card--list">
-            <div class="card">
-                <img src="assets/images/menS1.webp" />
-                <h4 class="card--title">Collared Casual Formal Soild Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.599</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/menS2.webp" />
-                <h4 class="card--title">Linen Cotton Long Sleeve Casual Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.699</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/MenS3.webp" />
-                <h4 class="card--title">Campus Sutra Regular Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.624</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/MenS4.jpg" />
-                <h4 class="card--title">Premium Cotton Formal Shirt </h4>
-                <div class="card--price">
-                    <div class="price">Rs.1299</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="assets/images/MenS6.jpg" />
-                <h4 class="card--title">Half Sleeves Casual Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.780</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="assets/images/MenS5.jpg" />
-                <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.780</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/MenS11.jpg" />
-                <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.780</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="assets/images/MenSs.webp" />
-                <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
-                <div class="card--price">
-                    <div class="price">Rs.780</div>
-                    <div class="size">Size:
-                        <label class="size-option">
-                            <input type="radio" name="size" value="small">
-                            <span class="size-label">S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="medium">
-                            <span class="size-label">M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="radio" name="size" value="large">
-                            <span class="size-label">L</span>
-                        </label>
-                    </div>
-                    <div class="quantity">
-                        <label for="quantity" class="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                    </div>
-                    <button class="add-to-cart">Add to cart</button>
-                </div>
-            </div>
+        <div class="each--product">
+          <img src="assets/images/womensPants.webp" />
+          <h2>Pants</h2>
         </div>
 
-        <div class="exploreMore">
-            <h2 class="section-heading">More To Explore </h2>
-            <div class="explore--list">
-                <div class="card">
-                    <img src="assets/images/LuggageBag.jpg" />
-                    <h4 class="card--title">Luggage Bag</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.2149</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
+        <div class="each--product">
+          <img src="assets/images/jewellery.jpg" />
+          <h2>jewellery</h2>
+        </div>
+      </div>
 
-                <div class="card">
-                    <img src="assets/images/necklace.jpg" />
-                    <h4 class="card--title">Necklace-set Combo</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.699</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
+      <h2 class="section-heading">Women Dresses</h2>
+      <div class="card--list">
+        <div class="card" id="1">
+          <img src="assets/images/WomenD1.webp" />
+          <a href="product-details.html?id=1">
+            <h4 class="card--title">Knee-length Party Dotted Dress</h4>
+          </a>
+          <div class="card--price">
+            <div class="price">Rs.1200</div>
+            <div class="size">
+              Size:
 
-                <div class="card">
-                    <img src="assets/images/Wristwatch.jpg" />
-                    <h4 class="card--title">Wrist watch</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.1800</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/jacket.jpg" />
-                    <h4 class="card--title">Winter Jacket</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.1600</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/leathershoes.png" />
-                    <h4 class="card--title">Leather Shoes</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.2780</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/Totebag.webp" />
-                    <h4 class="card--title">Canvas Totebag</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.480</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/images/goldEar.jpg" />
-                    <h4 class="card--title">Canvas Totebag</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.480</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/expShoes.jpg" />
-                    <h4 class="card--title">Canvas Totebag</h4>
-                    <div class="card--price">
-                        <div class="price">Rs.480</div>
-                        <div class="size">Size:
-                            <label class="size-option">
-                                <input type="radio" name="size" value="small">
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium">
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large">
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        </div>
-                        <button class="add-to-cart">Add to cart</button>
-                    </div>
-                </div>
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
             </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
         </div>
 
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-close">
-                <i class="fa-solid fa-close"></i>
+        <div class="card">
+          <img src="assets/images/WomenD2.jpg" />
+          <a href="product-details.html?id=2">
+            <h4 class="card--title">Office Knee Length Dress</h4>
+          </a>
+          <div class="card--price">
+            <div class="price">Rs.700</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
             </div>
-            <div class="cart-menu">
-                <h3>My Cart</h3>
-                <div class="cart-tems"></div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
             </div>
-            <div class="sidebar--footer">
-                <div class="total--amount">
-                    <h5>Total</h5>
-                    <div class="cart-total"></div>
-                </div>
-                <button class="checkout-btn">Checkout</button>
-            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
         </div>
 
-        <footer class="site-footer">
-            <div class="footer-container">
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h3>About Us</h3>
-                        <ul>
-                            <li><a href="#">Our Story</a></li>
-                            <li><a href="#">Mission & Vision</a></li>
-                            <li><a href="#">Team</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Customer Service</h3>
-                        <ul>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Shipping Information</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Shop</h3>
-                        <ul>
-                            <li><a href="#">All Products</a></li>
-                            <li><a href="#">New Arrivals</a></li>
-                            <li><a href="#">Best Sellers</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><img src="assets/images/fb.jpg" alt="Facebook"></a>
-                        <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="assets/images/twitter.png" alt="Twitter"></a>
-
-                    </div>
-                </div>
+        <div class="card">
+          <img src="assets/images/WomenD3.jpg" />
+          <a href="product-details.html?id=3">
+          <h4 class="card--title">Long Silk Summer Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.598</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
             </div>
-        </footer>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
 
+        <div class="card">
+          <img src="assets/images/WomenD4.jpg" />
+          <a href="product-details.html?id=4"> <h4 class="card--title">Bodycon Western Office Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.400</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/WomenD5.jpg" />
+          <a href="product-details.html?id=5">
+          <h4 class="card--title">Georgtte Print Flared Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.850</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/images/WomenD6.jpg" />
+          <a href="product-details.html?id=6"><h4 class="card--title">Lace Overlaid Regular Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.900</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/WomenD7.jpg" />
+          <a href="product-details.html?id=7"><h4 class="card--title">Beach Mini Women Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.499</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/WomenD8.jpg" />
+          <a href="product-details.html?id=8"> <h4 class="card--title">Plus Size Layered Maxi Dress</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.2900</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="Large" />
+                <span class="size-label">L</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="Extra Large" />
+                <span class="size-label">XL</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="Double Extra Large" />
+                <span class="size-label">XXL</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+      </div>
+      <br />
+      <hr />
+      <h2 class="section-heading">Men's Shirts</h2>
+      <div class="card--list">
+        <div class="card">
+          <img src="assets/images/menS1.webp" />
+          <a href="product-details.html?id=9"> <h4 class="card--title">Collared Casual Formal Soild Shirt</h4></a>
+          <div class="card--price">
+            <div class="price">Rs.599</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/menS2.webp" />
+          <h4 class="card--title">Linen Cotton Long Sleeve Casual Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.699</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/MenS3.webp" />
+          <h4 class="card--title">Campus Sutra Regular Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.624</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/MenS4.jpg" />
+          <h4 class="card--title">Premium Cotton Formal Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.1299</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/images/MenS6.jpg" />
+          <h4 class="card--title">Half Sleeves Casual Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.780</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/images/MenS5.jpg" />
+          <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.780</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/MenS11.jpg" />
+          <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.780</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="assets/images/MenSs.webp" />
+          <h4 class="card--title">Allen Solly Casual Half-sleeve Shirt</h4>
+          <div class="card--price">
+            <div class="price">Rs.780</div>
+            <div class="size">
+              Size:
+              <label class="size-option">
+                <input type="radio" name="size" value="small" />
+                <span class="size-label">S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="medium" />
+                <span class="size-label">M</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="size" value="large" />
+                <span class="size-label">L</span>
+              </label>
+            </div>
+            <div class="quantity">
+              <label for="quantity" class="quantity">Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                value="1"
+                min="1"
+              />
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="exploreMore">
+        <h2 class="section-heading">More To Explore</h2>
+        <div class="explore--list">
+          <div class="card">
+            <img src="assets/images/LuggageBag.jpg" />
+            <h4 class="card--title">Luggage Bag</h4>
+            <div class="card--price">
+              <div class="price">Rs.2149</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/images/necklace.jpg" />
+            <h4 class="card--title">Necklace-set Combo</h4>
+            <div class="card--price">
+              <div class="price">Rs.699</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/images/Wristwatch.jpg" />
+            <h4 class="card--title">Wrist watch</h4>
+            <div class="card--price">
+              <div class="price">Rs.1800</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/images/jacket.jpg" />
+            <h4 class="card--title">Winter Jacket</h4>
+            <div class="card--price">
+              <div class="price">Rs.1600</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/leathershoes.png" />
+            <h4 class="card--title">Leather Shoes</h4>
+            <div class="card--price">
+              <div class="price">Rs.2780</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/Totebag.webp" />
+            <h4 class="card--title">Canvas Totebag</h4>
+            <div class="card--price">
+              <div class="price">Rs.480</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/goldEar.jpg" />
+            <h4 class="card--title">Canvas Totebag</h4>
+            <div class="card--price">
+              <div class="price">Rs.480</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/images/expShoes.jpg" />
+            <h4 class="card--title">Canvas Totebag</h4>
+            <div class="card--price">
+              <div class="price">Rs.480</div>
+              <div class="size">
+                Size:
+                <label class="size-option">
+                  <input type="radio" name="size" value="small" />
+                  <span class="size-label">S</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="medium" />
+                  <span class="size-label">M</span>
+                </label>
+                <label class="size-option">
+                  <input type="radio" name="size" value="large" />
+                  <span class="size-label">L</span>
+                </label>
+              </div>
+              <div class="quantity">
+                <label for="quantity" class="quantity">Quantity:</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                />
+              </div>
+              <button class="add-to-cart">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-close">
+          <i class="fa-solid fa-close"></i>
+        </div>
+        <div class="cart-menu">
+          <h3>My Cart</h3>
+          <div class="cart-tems"></div>
+        </div>
+        <div class="sidebar--footer">
+          <div class="total--amount">
+            <h5>Total</h5>
+            <div class="cart-total"></div>
+          </div>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-links">
+            <div class="footer-section">
+              <h3>About Us</h3>
+              <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Mission & Vision</a></li>
+                <li><a href="#">Team</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>Customer Service</h3>
+              <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Shipping Information</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>Shop</h3>
+              <ul>
+                <li><a href="#">All Products</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Best Sellers</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Return Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social-links">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#"><img src="assets/images/fb.jpg" alt="Facebook" /></a>
+              <a href="#"
+                ><img src="assets/images/instagram.png" alt="Instagram"
+              /></a>
+              <a href="#"
+                ><img src="assets/images/twitter.png" alt="Twitter"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
 
-    <script src="script.js">
-        </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
