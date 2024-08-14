@@ -43,7 +43,14 @@
         font-size: 2rem; /* Adjust font size */
     }
 }
-                
+a {
+    text-decoration: none;
+    color: var(--text-color);
+    
+}     
+a:hover{   
+    color:  rgb(40, 74, 108);
+}         
 /*{
     margin: 0;
     padding: 0;
