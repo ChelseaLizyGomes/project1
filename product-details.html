@@ -99,7 +99,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get("id")); // Retrieve product ID from URL query parameter
         const selectedSize = urlParams.get("size"); // Retrieve product size from URL query parameter
-        const quantity = parseInt(urlParams.get("quantity")); // Retrieve product quantity from URL query parameter and ensure it's an integer
+        const quantity = parseInt(urlParams.get("quantity")) || 1; // Retrieve product quantity and ensure it's an integer
 
         function showNotification() {
           var notificationBox = document.getElementById("notificationBox");
@@ -161,7 +161,7 @@
               price: product.price,
               imageUrl: product.imageUrl,
               size: selectedSizeValue,
-              quantity: parseInt(document.getElementById("quantity").value),
+              quantity: parseInt(document.getElementById("quantity").value) || 1,
             };
 
             // Send the item data to the main page to add to cart
