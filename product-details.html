@@ -15,19 +15,19 @@
         display: flex;
         margin-top: 40px;
       }
-      
+
       #prodetails .single-pro-image {
         width: 400px; /* Set the desired width */
-    height: 500px; /* Set the desired height */
-    overflow: hidden; /* Hide any overflow */
-    display: flex;
+        height: 500px; /* Set the desired height */
+        overflow: hidden; /* Hide any overflow */
+        display: flex;
         margin-right: 50px;
       }
 
       #prodetails .single-pro-details {
         width: 50%;
-        padding-top: 30px; 
-        text-align: left; 
+        padding-top: 30px;
+        text-align: left;
       }
 
       #prodetails .single-pro-details h4 {
@@ -35,16 +35,15 @@
         text-align: left;
       }
       /* Using !important to override other rules */
-#prodetails .single-pro-details,
-.card--price,
-.price,
-.size,
-.size-option,
-.quantity,
-.description {
-    text-align: left !important;
-}
-
+      #prodetails .single-pro-details,
+      .card--price,
+      .price,
+      .size,
+      .size-option,
+      .quantity,
+      .description {
+        text-align: left !important;
+      }
     </style>
   </head>
 
@@ -99,17 +98,14 @@
       window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get("id")); // Retrieve product ID from URL query parameter
-        const size = urlParams.get("size"); // Retrieve product size from URL query parameter
+        const selectedSize = urlParams.get("size"); // Retrieve product size from URL query parameter
         const quantity = parseInt(urlParams.get("quantity")); // Retrieve product quantity from URL query parameter and ensure it's an integer
 
         function showNotification() {
           var notificationBox = document.getElementById("notificationBox");
           var notificationText = document.getElementById("notificationText");
-
           notificationText.textContent = "Item Added to cart!";
           notificationBox.style.display = "block";
-
-          // Hide the notification after a delay (e.g., 1 second)
           setTimeout(function () {
             notificationBox.style.display = "none";
           }, 1000); // Adjust the delay as needed
@@ -123,83 +119,70 @@
           const productDetailContainer = document.getElementById(
             "productDetailContainer"
           );
+
+          // Generate size options dynamically
+          const sizeOptions = product.sizes
+            .map(
+              (size) => `
+      <label class="size-option"> 
+        <input type="radio" name="size" value="${size.value}" ${
+                selectedSize === size.value ? "checked" : ""
+              }>
+        <span class="size-label">${size.display}</span>
+      </label>
+    `
+            )
+            .join("");
+
           productDetailContainer.innerHTML = `
-            <section id="prodetails" class="section-p1">
-                
-                  <div class="single-pro-image"> 
-                    <img src="${product.imageUrl}" alt="${
-            product.name
-          }" width="100%" height="100%" id="MainImg"/>
-                </div>
-                <div class="single-pro-details">
-                    <h4>${product.name}</h4>
-                    <div class="card--price"> 
-                        <div class="price">Rs.${product.price}</div>
-                        <div class="size">Size:
-                            <label class="size-option"> 
-                                <input type="radio" name="size" value="small" ${
-                                  size === "small" ? "checked" : ""
-                                }>
-                                <span class="size-label">S</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="medium" ${
-                                  size === "medium" ? "checked" : ""
-                                }>
-                                <span class="size-label">M</span>
-                            </label>
-                            <label class="size-option">
-                                <input type="radio" name="size" value="large" ${
-                                  size === "large" ? "checked" : ""
-                                }>
-                                <span class="size-label">L</span>
-                            </label>
-                        </div>
-                        <div class="quantity">
-                            <label for="quantity" class="quantity">Quantity:</label>
-                            <input type="number" id="quantity" name="quantity" value="${quantity}" min="1">
-                        </div>
-                        <p class="description">${product.description}</p>
-                        <button class="add-to-cart" data-id="${
-                          product.id
-                        }">Add to cart</button>
-                    </div>
-                </div>   
-            </section>
-        `;
+   <section id="prodetails" class="section-p1">
+     <div class="single-pro-image"> 
+      <img src="${product.imageUrl}" alt="${product.name}" width="100%" height="100%" id="MainImg"/> </div>
+      <div class="single-pro-details">
+      <h4>${product.name}</h4>
+        <div class="card--price"> 
+        <div class="price">Rs.${product.price}</div>
+          <div class="size">Size: ${sizeOptions}</div>
+            <div class="quantity">
+             <label for="quantity" class="quantity">Quantity:</label>
+           <input type="number" id="quantity" name="quantity" value="${quantity}" min="1"> </div>
+             <p class="description">${product.description}</p>
+            <button class="add-to-cart" data-id="${product.id}">Add to cart</button> </div> </div> </section> `;
 
           // Add event listener for add to cart button
           const addToCartButton = document.querySelector(".add-to-cart");
           addToCartButton.addEventListener("click", () => {
+            //new
+            const selectedSizeValue =
+              document.querySelector('input[name="size"]:checked')?.value || "";
             const item = {
               id: product.id,
               name: product.name,
               price: product.price,
               imageUrl: product.imageUrl,
-              size: document.querySelector('input[name="size"]:checked').value,
+              size: selectedSizeValue,
               quantity: parseInt(document.getElementById("quantity").value),
             };
 
             // Send the item data to the main page to add to cart
             window.parent.postMessage(
               { action: "add-to-cart", item: item },
-              "*"
-            );
+              "*" );
 
             showNotification();
           });
         } else {
           console.error("Product not found");
-        }
-      };
+        } };
 
       class Product {
-        constructor(id, name, price, description, imageUrl) {
+        constructor(id, name, price, description, imageUrl, sizes) {
           this.id = id;
           this.name = name;
           this.price = price;
           this.description = description;
           this.imageUrl = imageUrl;
+          this.sizes = sizes;
         }
 
         static getProductById(productId) {
@@ -214,171 +197,283 @@
           "Knee-length Party Dotted Dress",
           1200,
           "Classy 1950s Style Polka Dot Dress: Square Neckline, Mini Bowknot at Bust Area with Cut Out Design, High Waist, Fit Flare Style, Zip in Back. Perfect for Daily Casual, Dating, Vintage Fashion Show, Cocktail Party, Tea Party, Theme Costume Wear or other Special Occasions..",
-          "assets/images/WomenD1.webp"
-        ),
+          "assets/images/WomenD1.webp",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ] ),
         new Product(
           2,
           "Office Knee Length Dress",
           700,
           "Office Women Knee Length Dress | Women Fit and Flare Knee-Length Dress will help you embrace elegance. Its fit-and-flare style will highlight your curves and keep you comfortable for the entire day. Its timeless silhouette and elegant neckline exudes sophistication and comfort at the same time. Last but not least, turn heads in our Mock Neck Crepe Fit and Flare Dress made from opulent crepe fabric, it has a mock neckline that gives it a contemporary twist",
-          "assets/images/WomenD2.jpg"
-        ),
+          "assets/images/WomenD2.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]),
         new Product(
           3,
           "Long Silk Summer Dress",
           598,
           "Beach Women Silky Long Dress: V- Neckline, High Waist, Fit Flare Style, Zip in side-ways. Perfect for Picnic, Photoshoot , Daily Casual, Dating, Fashion Show, Cocktail Party or other Special Occasions..",
-          "assets/images/WomenD3.jpg"
-        ),
+          "assets/images/WomenD3.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]),
         new Product(
           4,
           "Bodycon Western Office Dress",
           400,
           "Western Office Women Knee Length Dress | Women body-fit Knee-Length Dress will help you embrace elegance. Its style will highlight your curves and its smooth material will keep you comfortable for the entire day. Last but not least, its sleevless hands ensure that you can flaunt your hands and also enjoy the breeze",
-          "assets/images/WomenD4.jpg"
-        ),
-        //need to change product description
+          "assets/images/WomenD4.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ] ),
         new Product(
           5,
           "Georgtte Print Flared Dress",
           850,
           "Regular Georgette Women's Dress, Suitable Gift for Christmas, New Year, Valentines Day, Birthday, Wedding, Anniversary, Party Wear, Meternity ",
-          "assets/images/WomenD5.jpg"
-        ),
+          "assets/images/WomenD5.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ] ),
         new Product(
           6,
           "Lace Overlaid Regular Dress",
           900,
           " Miss Chase Women's Beige & Wine Round Neck Sleeveless Georgette Floral Lace Fit & Flare Maxi Dress, 100 % Polyester | Suitable for Party wear, evening wear, night-out wear.",
-          "assets/images/WomenD6.jpg"
-        ),
+          "assets/images/WomenD6.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ] ),
         new Product(
           7,
           "Beach Mini Women Dress",
           499,
           "Mini Length Women Dress | Made Of Breathable Rayon Fabric That Allows Air Circulation And Keeps You Cool All Day Long. This Fit & Flair Style Western Dress is Lightweight, Breathable, Stretchy & Incredibly Soft To The Skin. It can be worn for a variety of occasions, from casual daywear to formal events.",
-          "assets/images/WomenD7.jpg"
+          "assets/images/WomenD7.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           8,
           "Plus Size Layered Maxi Dress",
           2900,
           "Women's Plus Size Purple Solid Color Georgette Layered Maxi Dress With Attached Lining, has a V-Neck, 3/4th sleeves has flounce hem. It's Maxi length and relaxed pattern makes it easy to be a fit for any occasion from formal to casual.",
-          "assets/images/WomenD8.jpg"
+          "assets/images/WomenD8.jpg",
+          [
+            { value: "L", display: "L" },
+            { value: "XL", display: "XL" },
+            { value: "XXL", display: "XXL" },
+          ]
         ),
         new Product(
           9,
           "Collared Casual Formal Soild Shirt",
           599,
           "Mens Maroon/Plum Slim Fit Shirt.This stylish shirt features a spread collar with full sleeves, made from a comfortable cotton, this shirt is both durable and breathable. This shirt can be worn for any occasion, whether it's a night out with friends or a casual day at work.",
-          "assets/images/menS1.webp"
+          "assets/images/menS1.webp",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           10,
           "Linen Cotton Long Sleeve Casual Shirt",
           699,
           "This Casual Solid shirt has a Slim fit, Spread collar, full button Placket, Full Sleeves, and a curved hemline Size and Fit Slim Fit. Enhance your look by wearing this Casual Stylish Men's shirt, Team it with a pair of Chinos or Tapered Denim and Sneakers for a fun Smart Casual look. Its 100% Premium Cottton, extremely soft finish and Rich look is best for casual & smart casual wear.",
-          "assets/images/menS2.webp"
+          "assets/images/menS2.webp",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           11,
           "Campus Sutra Regular Shirt",
           624,
           "Regular fit Pure cotton fabric shirt can be worn for casual wear, party wear and so on. sutra.We suggest teaming it with a pair of jeans and casual shoes for a great look.",
-          "assets/images/MenS3.webp"
+          "assets/images/MenS3.webp",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           12,
           "Premium Cotton Formal Shirt",
           1299,
           "Modern Casual shirt with perfect fitting made with 100% premium cotton fabric can be teamed up with your favourite pair of denims or formal trousers to make distinctive style statement. For long lasting durability use a steam press after every wash.",
-          "assets/images/MenS4.jpg"
+          "assets/images/MenS4.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           13,
           "Allen Solly Casual Half-sleeve Shirt",
           1780,
           "Slim Fit Casual Half Sleeves shirt.Crafted using high-quality cotton, this shirt is the epitome of breathable comfort suitable for long summer days. With its eye-catching yellow augmented by a half sleeve, this shirt is an unmissable newbie in your wardrobe. Get ready to step out in style with the Allen Solly latest collection.",
-          "assets/images/MenS6.jpg"
+          "assets/images/MenS6.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           14,
           "Casual Half-sleeve Shirt",
           680,
           "Enhance your Style Quotient Wearing this Stylish Yet Comfortable Tailored Fit Linen Cotton Formal Shirt by Southbay, featuring the Slim Cut Spread Collar, Single Patch Pocket on the chest and the Fitted Half Sleeves. This Fitted Half Hand Shirt has the Distinctive Thread Stitching and Trim Highlights with Curved Hem and Metallic Brand Logo Embellishment. The Specialized Cotton Fabric Makes it Soft, Comfortable, Breathable and Easy to Wash, Iron and Dry instantly. You can also Pair it with Some Smart Shorts or Jogger Pants, Athleisure Wear when going on a Leisure Trip or a Relaxed Outing for the Ultimate Comfort & Style. It is Pre-Enzyme Washed for Super Soft Touch & Feel Experience, comfortable to wear all day long.",
-          "assets/images/MenS5.jpg"
+          "assets/images/MenS5.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           15,
           "Rose print casual shirt",
           599,
           "Rose print casual shirt for men | Enhance your look by wearing this Casual Stylish Men's shirt, Team it with a pair of tapered denims Or Solid Chinos and Loafers for a fun Smart Casual look. Its print will give you grasp with the latest trends and fashion. Its material is 100% cotton that can ensure you have a long day at ease. ",
-          "assets/images/MenS11.jpg"
+          "assets/images/MenS11.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           16,
           "Floral-Print Casual shirt",
           500,
           "blue floral print casual shirt for men | Enhance your look by wearing this Casual Stylish Men's shirt, Team it with a pair of tapered denims Or Solid Chinos and Loafers for a fun Smart Casual look. Its print will give you grasp with the latest trends and fashion. Its material is 100% cotton that can ensure you have a long day at ease. ",
-          "assets/images/MenSs.webp"
+          "assets/images/MenSs.webp",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           17,
           "Luggage Bag",
           2149,
           " Unique design and durable lightweight case, unique and stylish. Extremely light weight, will not be an extra burden to children when they go or on the way to travel. A space for you, especially suits for holiday/vacation/long journey travel. Lock type: Zipper, number of compartments: 2, capacity- 18 kg Water resistant, light in weight, handel type: extendable, weight: 1.5 kg Water resistant, light in weight, handel type: extendable, dimensions - 24*30*53 cm, weight:- 1.5 kg",
-          "assets/images/LuggageBag.jpg"
+          "assets/images/LuggageBag.jpg",
+          [
+            { value: "55cm", display: "55cm" },
+            { value: "68cm", display: "68cm" },
+          ]
         ),
         new Product(
           18,
-          "Necklace-set Combo",
-          799,
-          "Summer Beaded Necklace, Beach Necklace, Cowrie Shell Necklace, Summer Layers, Ivory Beads, Shell Jewelry, Gift for Her, Made in Greece.",
-          "assets/images/necklace.jpg"
+          "Newborn Baby Romper",
+          599,
+          "Our rompers are very easy, comfortable and are made up of cotton. Our rompers provide quick dressing with zero hassle. The front itch buttons on the rompers will easily allow diaper change & dressing.",
+          "assets/images/baby1.jpg",
+          [
+            { value: "0-3", display: "0-3 months" },
+            { value: "3-6", display: "3-6 months" },
+            { value: "6-9", display: "6-9 months" },
+          ]
         ),
         new Product(
           19,
-          "Wrist watch",
-          1800,
-          "Stay fashionable with this watch. This Analogue watch has Round Dial. The Silver colored straps in the watch are Stylish with Japanese Quartz.  Dial Color: White | Dial Diameter: 38 mm |Thickness: 8mm | Band Width:22mm | Max Perimeter: 220mm | Min Perimeter: 160mm. Stainless Steel Chain | Stainless Steel Back | Resist. Package Includes:1 Watch | Company Box | Card Gst Paid Bill and 1 year Warranty.",
-          "assets/images/Wristwatch.jpg"
+          "Polycotton Onesies",
+          670,
+          "This Romper is Made of Fine Quality Coral Fleece Which is Both Side Furry And Comfortable in Loosy Fit For Baby . This Romper is Unisex And Applicable for Both Baby Boys And Baby Girls.",
+          "assets/images/baby2.webp",
+          [
+            { value: "0-3", display: "0-3 months" },
+            { value: "3-6", display: "3-6 months" },
+            { value: "6-9", display: "6-9 months" },
+          ]
         ),
         new Product(
           20,
           "Winter Jacket",
           1400,
           "Winter jacket for women. This Puffer nylon Jacket will keep your body warm all day and night. Its a perfect purchase for heavy winter wear. Its  Relaxed-Fit in Soft Fabric with Warmth makes one feel at ease. Its hood is a cherry on top.",
-          "assets/images/jacket.jpg"
+          "assets/images/jacket.jpg",
+          [
+            { value: "small", display: "S" },
+            { value: "medium", display: "M" },
+            { value: "large", display: "L" },
+          ]
         ),
         new Product(
           21,
           "Leather Shoes",
           2780,
           "Elevate your office attire with SIGN APP Patent Leather Lace-Ups, designed for the discerning gentleman. Crafted from premium Patent Leather, these shoes offer a sophisticated, polished look and enduring durability. The cushioned insole and breathable lining ensure exceptional comfort throughout the day. With robust construction and meticulous stitching, these shoes provide excellent value for daily wear. Perfect for any formal occasion.",
-          "assets/images/leathershoes.png"
+          "assets/images/leathershoes.png",
+          [
+            { value: "6", display: "6" },
+            { value: "7", display: "7" },
+            { value: "8", display: "8" },
+          ]
         ),
         new Product(
           22,
-          " Canvas Totebag",
-          1600,
-          "The tote handbag comes in a stunning colour scheme of bright yellow, white, and black, making the bag a perfect showstopper. The black vertical designs of the cotton tote bag are expertly handcrafted and pair beautifully with the yellow and white background. Apart from its aesthetic appeal, the tote bag is also highly functional, thanks to its premium quality materials.",
-          "assets/images/Totebag.webp"
+          " Quench - Water Bottle",
+          999,
+          "This vacuum-insulated drink bottle has a luxurious, matte finish and a strong, double-walled stainless steel design allowing you to take your hydration partner with you wherever you go. Our bottle is shatterproof, condensation-free, and has a sturdy screw-top lid, making it more than just a pretty accessory. Make it perfect by personalising your accessory to keep you hydrated everywhere.It  is proven to Keep your drink cold for up to 15 hours and hot for up to 12 hours",
+          "assets/images/flask.webp",
+          [
+            { value: "500ml", display: "500ml" },
+            { value: "750ml", display: "750ml" },
+            { value: "1000ml", display: "1000ml" },
+          ]
         ),
         new Product(
           23,
-          "Flower Shaped Earrings",
-          1200,
-          "These earrings are lightweight and comfortable to wear, making them suitable for all-day wear. It can be worn with both ethnic and western wear which makes it a perfect addition to your jewellery collection.This exquisite piece is ideal for office and everyday wear collection, and is a must-have for every woman.",
-          "assets/images/goldEar.jpg"
+          "High Waist woman denim skirt",
+          474,
+          "Soften's Front-Opened Denim Skirt, a versatile staple for every occasion. This skirt seamlessly transitions from office sophistication to casual flair and even party-ready style. Crafted from exceptionally soft denim fabric, it ensures a comfortable wear throughout every season. The front-open design adds a chic touch, while its adaptability makes it a go-to piece in your wardrobe. Enjoy effortless style and comfort in any setting with this versatile denim skirt.",
+          "assets/images/skirt1.webp",
+          [
+            { value: "26", display: "26" },
+            { value: "28", display: "28" },
+            { value: "30", display: "30" },
+          ]
         ),
+
         new Product(
           24,
           "Casual Walking Sneakers",
           1499,
           "If you are looking for stylish and casual sneakers for women, these chunky sneakers are the go-to shoes for women. These sneakers have a thick sole that provides both comfort and support for your feet while adding a bounce to your stride. They also have a soft and cozy feel that makes them ideal for everyday wear.",
-          "assets/images/expShoes.jpg"
+          "assets/images/expShoes.jpg",
+          [
+            { value: "6", display: "6" },
+            { value: "7", display: "7" },
+            { value: "8", display: "8" },
+          ]
         ),
-        
       ];
 
       function getProductDetails(productId) {
