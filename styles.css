@@ -80,7 +80,7 @@ body{
 .search--box{
     background: var(--decent-color);
     border-radius: 10px;
-    flex-grow: 3;
+    /*/flex-grow: 3;*/
     align-items: center;
     padding: 0 2rem;
     width: 90%;
@@ -93,6 +93,13 @@ body{
     background: transparent;
     padding: 10px;
     width: 90%;
+    border: none ;
+   outline: none;
+   box-shadow: none;       /* Removes any default shadow */
+   font: inherit;          /* Inherits font settings from parent */  
+}
+.search--box:hover{
+    background-color: rgb(245, 246, 247);
 }
 .icons {
     display: flex;
@@ -168,17 +175,34 @@ body{
     color:rgb(244, 216, 92);
     font-style: normal;
 }
-
-.section-heading{
+.section-heading {
     font-size: 18px;
     text-transform: uppercase;
     margin: 1rem 0 10px 0;
     color: var(--text-color);
+    color: rgb(40, 74, 108);
+    padding: 5px 5px;
+}
+.marquee {
+    white-space: nowrap;
+    background: #e6f784; /* Background color for visibility */
+}
+.marquee div {
+    padding-left: 100%; /* Start from the right side */
+    animation: marquee 1s infinite; /* Adjust duration to control speed */
+    display: inline;
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(100%); /* Start from right */
+    }
+    100% {
+        transform: translateX(-100%); /* End at left side */
+    }
 }
 .products--list{
     display: flex;
     gap:12px;
-    
 }
 .each--product{
     width: 140px;
@@ -189,6 +213,7 @@ body{
     padding: 10px 13px;
     border-radius: 10px;
     color: var(--text-color);
+    margin-bottom: 10px;
 }
 .each--product img{
     width: 100%;
@@ -542,4 +567,30 @@ body{
         width: 870px;
       } 
     
+      .sidebar {
+        width: 300px;
+        height: 100%;
+        position: fixed;
+    top: 0;
+        /*right: 0px;*/
+        right: -400px;
+        background-color: var(--accent-color);
+        box-shadow: -4px 0 6px rgba(0 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+     }
+     /*.sidebar:hover { width: 1300px;}*/
+
+     .sidebar.open {
+        right: 0;
+     }
+     .sidebar-close {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor:pointer;
+    }
     }
