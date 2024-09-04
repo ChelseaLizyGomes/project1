@@ -183,21 +183,26 @@ body{
     color: rgb(40, 74, 108);
     padding: 5px 5px;
 }
-.marquee {
-    white-space: nowrap;
-    background: #e6f784; /* Background color for visibility */
+.one {
+    background: linear-gradient(110.2deg, rgb(54, 197, 240) 8.2%, rgb(40, 74, 108)92.4%); /* Background color for visibility */
+    color: grey;
 }
-.marquee div {
-    padding-left: 100%; /* Start from the right side */
-    animation: marquee 1s infinite; /* Adjust duration to control speed */
-    display: inline;
+marquee {
+    
+    display: block;
+    
 }
-@keyframes marquee {
+marquee div {
+    padding-left: 0%; /* Start from the right side */
+    animation: marquee 8s infinite; /* Adjust duration to control speed */
+    
+}
+ @keyframes marquee {
     0% {
-        transform: translateX(100%); /* Start from right */
+        transform: translateX(100%); /* Start from right/*/
     }
     100% {
-        transform: translateX(-100%); /* End at left side */
+        transform: translateX(-100%); /* End at left side/*/
     }
 }
 .products--list{
@@ -214,6 +219,7 @@ body{
     border-radius: 10px;
     color: var(--text-color);
     margin-bottom: 10px;
+    background-color: aliceblue;
 }
 .each--product img{
     width: 100%;
@@ -568,12 +574,12 @@ body{
       } 
     
       .sidebar {
-        width: 300px;
+        width: 900px;
         height: 100%;
         position: fixed;
     top: 0;
         /*right: 0px;*/
-        right: -400px;
+        right: -1000px;
         background-color: var(--accent-color);
         box-shadow: -4px 0 6px rgba(0 0, 0, 0.1);
         transition: right 0.3s ease-in-out;
@@ -583,6 +589,9 @@ body{
         border-bottom-left-radius: 20px;
      }
      /*.sidebar:hover { width: 1300px;}*/
+     .fa-cart-shopping:hover + .slidebar {
+        width: 1300px;
+    }
 
      .sidebar.open {
         right: 0;
@@ -592,5 +601,10 @@ body{
         right: 20px;
         top: 10px;
         cursor:pointer;
+    }
+    .one {
+        background: linear-gradient(110.2deg, rgb(54, 197, 240) 8.2%, rgb(40, 74, 108)92.4%); /* Background color for visibility */
+        color: grey;
+        width: 850px;
     }
     }
