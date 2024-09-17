@@ -15,18 +15,21 @@
         overflow-x: hidden;
         padding: 20px;
       }
-      .header {
-        --sizing: auto-fit;}
-        
+      .header{
+      flex: 1 1 auto;
+      margin: 10px;
+      width: 410%;
+}
      #prodetails {
         display: flex;
         margin-top: 40px;
         margin-right: 0%;
         padding: 10px;
-        width: 430%;
+        width: 410%;
         height: 600%;
         background-color: rgb(7, 25, 77);
         color: aliceblue;
+        margin: 20px;
       }
 
       #prodetails .single-pro-image {
@@ -50,14 +53,15 @@
       }
 
      h4 {
-  text-align:center;
+        text-align:center;
         font-size: 35px;
         margin-bottom: 10px;
       } 
         
-      .description {font-size: 25px;
+      .description {
+      font-size: 25px;
       margin-bottom: 20px;
-    font-family: Arial, Helvetica, sans-serif;}
+      font-family: Arial, Helvetica, sans-serif;}
 
     .single-pro-details .size{
       font-size: 30px;
@@ -81,22 +85,36 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 10px;
+  margin-right: 20px;
+  padding-right: 10px;
 } 
 .exploreMore .explore--list .card{
   width: 90%;
   height: 70%;
 }
-  /*/For laptop*/
-@media screen and (min-width: 1200px) {
-  .header {
-    --sizing: auto-fit;}
-
+/*/For tablet*/
+@media screen and (min-width: 600px) { 
+  .header{
+max-width: 380%; 
+  }
   #prodetails {
-    max-width: 100%; 
-  height: 800px;} 
+  max-width: 380%; 
+  height: 1000px;
+} 
+#prodetails .single-pro-image {
+        height: 1000px; 
+} }
 
-        #prodetails .single-pro-image {    
- /*  flex: 1 1 auto;  Allows the image to grow and shrink as needed/*/
+/*/For laptop*/
+@media screen and (min-width: 1200px) {
+  .header{
+max-width: 100%; 
+  }
+#prodetails {
+max-width: 100%; 
+height: 800px;} 
+
+#prodetails .single-pro-image {    
  width: 40%; 
  height: 600px;
  overflow: hidden; }
