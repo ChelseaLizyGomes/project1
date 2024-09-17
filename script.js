@@ -45,15 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addToCartButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
+      const card = button.closest(".card");
       const item = {
         id: parseInt(button.getAttribute("data-id")),
         name: document.querySelectorAll(".card .card--title")[index]
           .textContent,
         price: parseFloat(
-          document.querySelectorAll(".price")[index].textContent.slice(3)
-        ),
+          document.querySelectorAll(".price")[index].textContent.slice(3)),
         size: document.querySelector('input[name="size"]:checked').value,
-        quantity: parseInt(document.getElementById("quantity").value),
+        quantity: parseInt(card.querySelector(".quantity input").value),
         imageUrl: document.querySelectorAll(".card img")[index].src,
       };
 
@@ -74,10 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
     cartItemCount.textContent = count;
   }
 
-  function updateCartItemList() {
+  function updateCartItemList(items = cartItems) {
     cartItemsList.innerHTML = "";
 
-    cartItems.forEach((item, index) => {
+    items.forEach((item, index) => {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item", "individual-cart-item");
       cartItem.innerHTML = `
