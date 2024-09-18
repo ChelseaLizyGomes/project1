@@ -124,12 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.remove("open");
   });
 
-  //Eventlistener for searchbar to filter products
+  // Event listener for search bar to filter product cards
   document.getElementById("searchBar").addEventListener("input", (e) => {
     const searchData = e.target.value.toLowerCase();
-    const filteredItems = cartItems.filter((item) =>
-      item.name.toLowerCase().includes(searchData)
-    );
-    updateCartItemList(filteredItems);
+    const productCards = document.querySelectorAll(".card");
+
+    productCards.forEach((card) => {
+      const title = card.querySelector(".card--title").textContent.toLowerCase();
+      if (title.includes(searchData)) {
+        card.style.display = ""; // Show card
+      } else {
+        card.style.display = "none"; // Hide card
+      }
+    });
   });
 });
